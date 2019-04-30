@@ -1,13 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Libro
+from .models import Libro, Autor, Genero
+from .forms import LibroForm
 
 # Create your views here.
 
 
 def home(request):
-    return render(request, "index.html")
+    form = LibroForm()
+
+    return render(request, "index.html", {"formulario":form})
 
 
 def busqueda(request):
@@ -42,3 +45,34 @@ def busqueda2(request):
     
     return render(request, "lista.html", {"libros": resultado_busqueda})
 
+def crear_autor(request):
+    nombre_autor = request.GET.get("nombre")
+    nacionalidad = request.GET.get("nacionalidad")
+    print(nombre_autor,nacionalidad)
+
+    autor_nuevo = Autor(nombre=nombre_autor, nacionalidad=nacionalidad)
+    autor_nuevo.save()
+
+    return HttpResponse("Se creo el autor " + nombre_autor)
+
+
+def crear_libro(request):
+    if request.method=='POST':
+        print(request.POST)
+        parametros = request.POST
+        titulo = parametros.get("titulo")
+        sinopsis = parametros.get("sinopsis")
+        genero = parametros.get("genero")
+        autor = parametros.get("autor")
+        obj_autor = Autor.objects.get(id=autor)
+        qs_genero = Genero.objects.all()
+        
+        libro_nuevo = Libro(nombre=titulo, sinopsis=sinopsis, autor=obj_autor)#, generos=qs_genero)
+        libro_nuevo.save()
+
+        return HttpResponse("Se creo el libro "+ titulo)
+        
+    else:
+        form = LibroForm()
+    
+    return render(request, 'formu.html', {"formu":form})

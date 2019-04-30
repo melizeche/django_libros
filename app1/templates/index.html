@@ -1,4 +1,7 @@
 <html>
+<head>
+        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-uhut8PejFZO8994oEgm/ZfAv0mW1/b83nczZzSwElbeILxwkN491YQXsCFTE6+nx" crossorigin="anonymous">
+</head>
 <body>
 <h1>Buscador de libros</h1>
 <h3>Busqueda que no funciona solo muestra lo que buscaste</h3>
@@ -7,7 +10,7 @@
 <form action="busqueda" method="GET">
     <label>Busca por titulo</label>
     <input name="titulo" >
-    <input type="submit" value="Buscar">
+    <input type="submit" value="Buscar Libro">
 </form>
 <!-- Este form va a redirigir al la url http://.../busqueda/?titulo=Don+Quijote -->
 
@@ -26,6 +29,23 @@
 <h5>Link que dirige a http://.../lista/</h5>
 <!-- , que segun urls.py apunta a busqueda2() en views.py -->
 <a href="lista/">Lista de todos los libros</a>
+
+<h4>Crear autor</h4>
+<form action="crearautor" method="GET">
+    <label>Ingresa el nombre</label>
+    <input name="nombre" >
+    <label>Ingresa el nacionalidad</label>
+    <input name="nacionalidad" >
+
+    <input type="submit" value="Buscar Libro">
+</form>
+<h4>Crear libros con forms</h4>
+<form action="crearlibro/" method="POST">
+    {% csrf_token %}
+    {{ formulario }}
+    <input type="submit" value="Submit">
+</form>
+
 
 </body>
 </html>
