@@ -18,3 +18,11 @@ python3 manage.py runserver
 # Abrir el navegador en http:localhost:8000
 # http:localhost:8000/admin para la interfaz de administracion
 ```
+
+## Screenshots
+* Home
+![Home](screenshot1.jpg)
+* Busqueda que funciona
+![busqueda](screenshot2.jpg)
+* Lista de todos los libros
+![lista](screenshot3.png)
