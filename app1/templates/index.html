@@ -1,0 +1,31 @@
+<html>
+<body>
+<h1>Buscador de libros</h1>
+<h3>Busqueda que no funciona solo muestra lo que buscaste</h3>
+
+<!-- Aca le pasamos a busqueda, que segun urls.py apunta a busqueda() en views.py -->
+<form action="busqueda" method="GET">
+    <label>Busca por titulo</label>
+    <input name="titulo" >
+    <input type="submit" value="Buscar">
+</form>
+<!-- Este form va a redirigir al la url http://.../busqueda/?titulo=Don+Quijote -->
+
+<h3>Busqueda que si funciona</h3>
+
+<!-- Aca le pasamos a busqueda2, que segun urls.py apunta a busqueda2() en views.py -->
+<form action="busqueda2" method="GET">
+        <label>Busca por titulo</label>
+        <input name="titulo" >
+        <input type="submit" value="Buscar">
+    </form>
+    
+<!-- Esto va a redirigir al la url http://.../busqueda2/?titulo=Don+Quijote -->
+<br>
+
+<h5>Link que dirige a http://.../lista/</h5>
+<!-- , que segun urls.py apunta a busqueda2() en views.py -->
+<a href="lista/">Lista de todos los libros</a>
+
+</body>
+</html>
